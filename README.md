@@ -1,5 +1,5 @@
 # inventory-app
-Inventory app made with node as a part of the curriculum of The Odin Project. 
+Inventory app made with node as a part of the curriculum for The Odin Project. 
 
 # Technologies Used:
 
