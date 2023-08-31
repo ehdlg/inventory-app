@@ -1,0 +1,31 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <div class="genre-details">
+      <div class="genre-info">
+        <h2 class="genre-name">Deleting genre: <%= genre.name %></h2>
+
+        <div class="genre-games">
+          <% if (game_list.length === 0) { %>
+          <p>No games associated with this genre.</p>
+          <form action="" method="POST">
+            <div class="button-redirect button-delete">
+              <button type="submit" class="delete-button">Delete Genre</button>
+            </div>
+          </form>
+          <% } else { %>
+          <p>
+            Before deleting this genre, first remove it from the following
+            games:
+          </p>
+          <ul>
+            <% game_list.forEach(game => { %>
+            <li><%= game.name %></li>
+            <% }) %>
+          </ul>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

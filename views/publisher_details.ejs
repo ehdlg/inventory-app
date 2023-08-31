@@ -1,0 +1,28 @@
+<!-- publisher_detail.ejs -->
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <div class="publisher-details">
+      <div class="publisher-img">
+        <img src="<%= publisher.img %>" alt="Imagen del publisher" />
+      </div>
+      <div class="publisher-info">
+        <h2 class="publisher-name"><%= publisher.name %></h2>
+        <div class="publisher-founded">
+          Founded: <%= publisher.foundedDateFormatted %>
+        </div>
+        <div class="publisher-employees">
+          Number of Employees: <%= publisher.num_employees %>
+          <div class="buttons-container">
+            <a href="<%= publisher.url %>/delete" class="delete-button">
+              Delete
+            </a>
+            <a href="<%= publisher.url %>/update" class="update-button">
+              Update
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

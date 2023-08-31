@@ -1,0 +1,39 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main class="main-container">
+    <div class="welcome-message">
+      <h1 class="welcome-title">Welcome to the Inventory App</h1>
+      <p class="welcome-description">
+        This is a simple inventory management application. You can manage
+        genres, developers, publishers, and games.
+      </p>
+    </div>
+
+    <div class="grid-container">
+      <div class="grid-item">
+        <a href="/genres" class="grid-link">
+          <h2 class="grid-title">Genres</h2>
+          <p class="grid-description">Manage genres for games.</p>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="/developers" class="grid-link">
+          <h2 class="grid-title">Developers</h2>
+          <p class="grid-description">Manage game developers.</p>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="/publishers" class="grid-link">
+          <h2 class="grid-title">Publishers</h2>
+          <p class="grid-description">Manage game publishers.</p>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="/games" class="grid-link">
+          <h2 class="grid-title">Games</h2>
+          <p class="grid-description">Manage games in the inventory.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+</body>

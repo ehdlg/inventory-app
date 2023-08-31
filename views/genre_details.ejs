@@ -1,0 +1,26 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <div class="genre-details-container">
+      <h2 class="genre-name"><%= genre.name %></h2>
+      <% if (game_list.length > 0) { %>
+      <div class="game-list-container">
+        <% game_list.forEach(game => { %>
+        <div class="genre-game-card">
+          <h3 class="game-name"><%= game.name %></h3>
+          <a href="<%= game.url %>">
+            <button class="genre-details-button">Details</button>
+          </a>
+        </div>
+        <% }) %>
+      </div>
+      <% } else { %>
+      <p class="no-games-msg">No games found with this genre.</p>
+      <% } %>
+    </div>
+    <div class="button-redirect">
+      <a href="<%= genre.url %>/update" class="update-button"> Update </a>
+      <a href="<%= genre.url %>/delete" class="delete-button"> Delete </a>
+    </div>
+  </main
+</body>

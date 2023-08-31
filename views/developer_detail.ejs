@@ -1,0 +1,40 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <div class="developer-details">
+      <div class="developer-img">
+        <img src="<%= developer.img %>" alt="Imagen del desarrollador" />
+      </div>
+      <div class="developer-info">
+        <h2 class="developer-name"><%= developer.name %></h2>
+        <div class="developer-founded">
+          Founded: <%= developer.foundedDateFormatted %>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="game-list-title">Games by <%= developer.name %></h3>
+    <div class="developer-game-list">
+      <% if (game_list.length === 0) { %>
+      <p>No games found for this developer.</p>
+      <% } else { %> <% game_list.forEach(game => { %>
+      <div class="game-card">
+        <div class="game-img">
+          <a href="<%= game.url %>">
+            <img src="<%= game.img %>" alt="Imagen del juego" />
+          </a>
+        </div>
+        <h3 class="game-name"><%= game.name %></h3>
+        <div class="game-release">
+          Release date: <%= game.releaseDateFormatted %>
+        </div>
+        <a href="<%= game.url %>" class="game-link"></a>
+      </div>
+      <% }) %> <% } %>
+    </div>
+    <div class="button-redirect">
+      <a href="<%= developer.url %>/update" class="update-button"> Update </a>
+      <a href="<%= developer.url %>/delete" class="delete-button"> Delete </a>
+    </div>
+  </main>
+</body>

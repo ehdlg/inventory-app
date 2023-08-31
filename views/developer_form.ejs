@@ -1,0 +1,66 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <div class="form-container">
+      <h2><%= title %></h2>
+      <form action="" method="POST">
+        <% if (errors) { %>
+        <div class="error-list">
+          <ul>
+            <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
+        <input
+          type="hidden"
+          name="developerID"
+          value="<%= developer ? developer._id : '' %> "
+        />
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value="<%=  developer ? developer.name : ''%> "
+          />
+        </div>
+        <div class="form-group">
+          <label for="founded">Founded:</label>
+          <input
+            type="date"
+            id="founded"
+            name="founded"
+            required
+            value="<%= developer ? developer.founded.toISOString().slice(0, 10) : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="employees">Number of Employees:</label>
+          <input
+            type="number"
+            id="employees"
+            name="employees"
+            required
+            value="<%= developer ? developer.num_employees : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="img">Image URL:</label>
+          <input
+            type="text"
+            id="img"
+            name="img"
+            value="<%= developer ? developer.img : '' %> "
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>

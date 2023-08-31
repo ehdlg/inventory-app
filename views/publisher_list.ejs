@@ -1,0 +1,29 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <h2 class="body-title"><%= title %></h2>
+    <div id="publisher-list">
+      <% publisher_list.forEach(publisher => { %>
+      <div class="publisher-card">
+        <div class="publisher-img">
+          <img src="<%= publisher.img %>" alt="Imagen del publisher" />
+        </div>
+        <h3 class="publisher-name"><%= publisher.name %></h3>
+        <div class="publisher-founded">
+          Founded: <%= publisher.foundedDateFormatted %>
+        </div>
+        <div class="publisher-employees">
+          Number of Employees: <%= publisher.num_employees %>
+        </div>
+        <!-- Agregar un enlace para el div completo -->
+        <a href="<%= publisher.url %>" class="publisher-link"></a>
+      </div>
+      <% }) %>
+    </div>
+    <div class="button-redirect">
+      <a href="publishers/create"
+        ><button type="submit">Create new Publisher</button></a
+      >
+    </div>
+  </main>
+</body>

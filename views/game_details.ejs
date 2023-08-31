@@ -1,0 +1,35 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <div class="game-details">
+      <div class="game-img">
+        <img src="<%= game.img %>" alt="Imagen del juego" />
+      </div>
+      <div class="game-info">
+        <h2 class="game-name"><%= game.name %></h2>
+        <h3 class="game-developer">Developer: <%= game.developer.name %></h3>
+        <div class="game-release">
+          Release date: <%= game.releaseDateFormatted %>
+        </div>
+        <div class="game-genres">
+          Genres: <% game.genres.forEach(genre => { %>
+          <span><%= genre.name %></span>
+          <% }) %>
+        </div>
+        <div class="game-platforms">
+          Platforms: <% game.platforms.forEach(platform => { %>
+          <span><%= platform %></span>
+          <% }) %>
+        </div>
+
+        <div class="game-description"><%= game.description %></div>
+        <div class="game-price">Price: $<%= game.price.toFixed(2) %></div>
+        <div class="game-stock">Stock: <%= game.stock %></div>
+        <div class="button-redirect">
+          <a href="<%= game.url %>/update" class="update-button"> Update </a>
+          <a href="<%= game.url %>/delete" class="delete-button"> Delete </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

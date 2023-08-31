@@ -1,0 +1,126 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <div class="form-container">
+      
+      <form action="" method="POST">
+        <% if (errors) { %>
+        <div class="error-list">
+          <ul>
+            <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value="<%= game ? game.name : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            required
+          ><%= game ? game.description : '' %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="genres">Genres:</label>
+          <select id="genres" name="genres" multiple>
+            <% genres.forEach(genre => { %>
+            <option
+              value="<%= genre._id %>"
+              <%= game && game.genres.includes(genre._id) ? 'selected' : '' %>
+            ><%= genre.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="platforms">Platforms:</label>
+          <select id="platforms" name="platforms" multiple required>
+            <option value="Sony Playstation" <%= game && game.platforms.includes('Sony Playstation') ? 'selected' : '' %>>Sony Playstation</option>
+            <option value="Xbox" <%= game && game.platforms.includes('Xbox') ? 'selected' : '' %>>Xbox</option>
+            <option value="PC" <%= game && game.platforms.includes('PC') ? 'selected' : '' %>>PC</option>
+            <option value="Nintendo Switch" <%= game && game.platforms.includes('Nintendo Switch') ? 'selected' : '' %>>Nintendo Switch</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="publisher">Publisher:</label>
+          <select id="publisher" name="publisher">
+            <% publishers.forEach(publisher => { %>
+            <option
+              value="<%= publisher._id %>"
+              <%= game && game.publisher._id.equals(publisher._id) ? 'selected' : '' %>
+            ><%= publisher.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="developer">Developer:</label>
+          <select id="developer" name="developer">
+            <% developers.forEach(developer => { %>
+            <option
+              value="<%= developer._id %>"
+              <%= game && game.developer._id.equals(developer._id) ? 'selected' : '' %>
+            ><%= developer.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input
+            type="number"
+            id="price"
+            name="price"
+            step="0.01"
+            required
+            value="<%= game ? game.price : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="stock">Stock:</label>
+          <input
+            type="number"
+            id="stock"
+            name="stock"
+            required
+            value="<%= game ? game.stock : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="releaseDate">Release Date:</label>
+          <input
+            type="date"
+            id="releaseDate"
+            name="releaseDate"
+            required
+            value="<%= game ? game.releaseDate.toISOString().slice(0, 10) : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cover">Cover URL:</label>
+          <input
+            type="text"
+            id="cover"
+            name="cover"
+            value="<%= game ? game.cover : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit">
+            <%= game ? 'Update Game' : 'Create Game' %>
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>

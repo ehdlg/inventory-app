@@ -1,0 +1,23 @@
+<!-- genre_list.ejs -->
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <h2 class="body-title"><%= title %></h2>
+    <div class="genre-list">
+      <% genre_list.forEach(genre => { %>
+      <div class="genre-card">
+        <h3 class="genre-name"><%= genre.name %></h3>
+        <p class="genre-description"><%= genre.description %></p>
+        <!-- Agregar enlace para ver detalles del género -->
+        <a href="<%= genre.url %>" class="genre-link">Details</a>
+      </div>
+      <% }) %>
+    </div>
+
+    <div class="button-redirect">
+      <a href="genres/create"
+        ><button type="submit">Create new Genre</button></a
+      >
+    </div>
+  </main>
+</body>

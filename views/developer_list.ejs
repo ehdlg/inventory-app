@@ -1,0 +1,31 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <h1 class="body-title"><%= title %></h1>
+    <div id="dev-list" class="developer-list">
+      <% developer_list.forEach(developer => { %>
+      <div class="dev-card developer-card">
+        <div class="dev-img developer-img">
+          <img src="<%= developer.img %>" alt="Developer Image" />
+        </div>
+        <div class="dev-info developer-info">
+          <div class="dev-name developer-name"><%= developer.name %></div>
+          <div class="dev-founded developer-founded">
+            Founded: <%= developer.foundedDateFormatted %>
+          </div>
+          <div class="dev-employees developer-employees">
+            Employees: <%= developer.num_employees %>
+          </div>
+        </div>
+        <a href="<%= developer.url %>" class="redirect-link"></a>
+      </div>
+
+      <% }) %>
+    </div>
+    <div class="button-redirect">
+      <a href="developers/create"
+        ><button type="submit">Create new Developer</button></a
+      >
+    </div>
+  </main>
+</body>

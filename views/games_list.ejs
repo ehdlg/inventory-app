@@ -1,0 +1,30 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <h2 class="body-title"><%= title %></h2>
+    <div id="game-list">
+      <% game_list.forEach(game => { %>
+      <div class="game-card">
+        <!-- Agregar el enlace solo para la imagen -->
+        <div class="game-img">
+          <a href="<%= game.url %>">
+            <img src="<%= game.img %>" alt="Imagen del juego" />
+          </a>
+        </div>
+        <h3 class="game-name"><%= game.name %></h3>
+        <h4 class="game-developer"><%= game.developer.name %></h4>
+        <div class="game-release">
+          Release date: <%= game.releaseDateFormatted %>
+        </div>
+        <div class="game-description"><%= game.description %></div>
+        <div class="stock">Stock: <%= game.stock %></div>
+        <!-- Agregar un enlace para el div completo -->
+        <a href="<%= game.url %>" class="game-link"></a>
+      </div>
+      <% }) %>
+    </div>
+    <div class="button-redirect">
+      <a href="games/create"><button type="submit">Create new Game</button></a>
+    </div>
+  </main>
+</body>

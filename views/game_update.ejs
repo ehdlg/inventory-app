@@ -1,0 +1,76 @@
+<%- include('./layout.ejs') %>
+<body>
+  <main>
+    <h2 class="body-title"><%= title %></h2>
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= game.name %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required><%= game.description %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="genres">Genres:</label>
+        <select id="genres" name="genres" multiple required>
+          <% genres.forEach(genre => { %>
+            <option value="<%= genre._id %>" <%= game.genres.includes(genre._id) ? 'selected' : '' %>><%= genre.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="platforms">Platforms:</label>
+        <select id="platforms" name="platforms" multiple required>
+          <% platforms.forEach(platform => { %>
+            <option value="<%= platform %>" <%= game.platforms.includes(platform) ? 'selected' : '' %>><%= platform %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="publisher">Publisher:</label>
+        <select id="publisher" name="publisher" required>
+          <% publishers.forEach(publisher => { %>
+            <option value="<%= publisher._id %>" <%= game.publisher.toString() == publisher._id.toString() ? 'selected' : '' %>><%= publisher.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="developer">Developer:</label>
+        <select id="developer" name="developer" required>
+          <% developers.forEach(developer => { %>
+            <option value="<%= developer._id %>" <%= game.developer.toString() == developer._id.toString() ? 'selected' : '' %>><%= developer.name %></option>
+          <% }) %>
+        </select>
+        
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" value="<%= game.price %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" value="<%= game.stock %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="releaseDate">Release date:</label>
+        <input type="date" id="releaseDate" name="releaseDate" value="<%= game.releaseDate.toISOString().slice(0, 10) %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cover">Cover URL:</label>
+        <input type="text" id="cover" name="cover" value="<%= game.cover %>" required>
+      </div>
+
+      <button type="submit">Update game</button>
+    </form>
+  </main>
+</body>
